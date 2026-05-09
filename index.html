@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DishMaster | Learn to Cook Delicious Dishes Easily</title>
+    <meta name="description" content="Discover thousands of delicious recipes with easy-to-follow instructions and video tutorials. Start your cooking journey with DishMaster today!">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-utensils"></i> DishMaster
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="recipes.html">Recipes</a></li>
+                <li><a href="wishlist.html">Wishlist</a></li>
+                <li><a href="videos.html">Videos</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" title="Toggle Dark/Light Mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <a href="login.html" class="btn btn-outline">Login</a>
+                <a href="profile.html" class="user-profile-icon" style="display:none">
+                    <i class="fas fa-user-circle fa-2x"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Learn to Cook <span>Delicious Dishes</span> Easily</h1>
+                    <p>Master the art of cooking with our expert-led video tutorials and step-by-step written recipes for every cuisine.</p>
+                    <div class="search-container">
+                        <input type="text" id="homeSearch" placeholder="Search recipes (e.g. Butter Chicken, Pasta)...">
+                        <button class="btn btn-primary" id="searchBtn">
+                            <i class="fas fa-search"></i> Search
+                        </button>
+                    </div>
+                    <div class="trending-keywords" style="margin-top: 15px; font-size: 0.9rem; color: var(--text-muted);">
+                        Trending: <a href="#">Indian</a>, <a href="#">Quick Meals</a>, <a href="#">Healthy</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <!-- This image should be copied to assets/images/hero_food_spread.png -->
+                    <img src="assets/images/hero_food_spread.png" alt="Delicious Food Spread" id="heroImg">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Categories Section -->
+    <section class="categories" style="padding: 80px 0;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Explore Categories</h2>
+                <p>Browse through our wide range of food categories</p>
+            </div>
+            <div class="categories-grid">
+                <a href="recipes.html?cat=Indian" class="category-card">
+                    <div class="category-icon">🇮🇳</div>
+                    <div class="category-name">Indian</div>
+                </a>
+                <a href="recipes.html?cat=Chinese" class="category-card">
+                    <div class="category-icon">🍜</div>
+                    <div class="category-name">Chinese</div>
+                </a>
+                <a href="recipes.html?cat=Italian" class="category-card">
+                    <div class="category-icon">🍕</div>
+                    <div class="category-name">Italian</div>
+                </a>
+                <a href="recipes.html?cat=Fast Food" class="category-card">
+                    <div class="category-icon">🍔</div>
+                    <div class="category-name">Fast Food</div>
+                </a>
+                <a href="recipes.html?cat=Desserts" class="category-card">
+                    <div class="category-icon">🍰</div>
+                    <div class="category-name">Desserts</div>
+                </a>
+                <a href="recipes.html?cat=Healthy Food" class="category-card">
+                    <div class="category-icon">🥗</div>
+                    <div class="category-name">Healthy</div>
+                </a>
+                <a href="recipes.html?cat=Drinks" class="category-card">
+                    <div class="category-icon">🥤</div>
+                    <div class="category-name">Drinks</div>
+                </a>
+                <a href="recipes.html?cat=Vegan" class="category-card">
+                    <div class="category-icon">🌿</div>
+                    <div class="category-name">Vegan</div>
+                </a>
+                <a href="recipes.html?cat=Street Food" class="category-card">
+                    <div class="category-icon">🌮</div>
+                    <div class="category-name">Street Food</div>
+                </a>
+                <a href="recipes.html?cat=Bakery" class="category-card">
+                    <div class="category-icon">🥐</div>
+                    <div class="category-name">Bakery</div>
+                </a>
+                <a href="recipes.html?cat=Breakfast" class="category-card">
+                    <div class="category-icon">🍳</div>
+                    <div class="category-name">Breakfast</div>
+                </a>
+                <a href="recipes.html?cat=Seafood" class="category-card">
+                    <div class="category-icon">🐟</div>
+                    <div class="category-name">Seafood</div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Recipes -->
+    <section class="featured" style="padding: 0 0 80px;">
+        <div class="container">
+            <div class="section-title" style="text-align: left; display: flex; justify-content: space-between; align-items: flex-end;">
+                <div>
+                    <h2>Featured Recipes</h2>
+                    <p>Hand-picked recipes for you this week</p>
+                </div>
+                <a href="recipes.html" class="btn btn-outline">View All</a>
+            </div>
+            <div class="recipes-grid" id="featuredGrid">
+                <!-- Recipes will be injected here via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Trending Videos -->
+    <section class="trending-videos" style="padding: 80px 0; background-color: var(--bg-white);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Trending Video Recipes</h2>
+                <p>Watch and learn from the best chefs</p>
+            </div>
+            <div class="video-grid" id="trendingVideoGrid">
+                <!-- Videos will be injected here via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter" style="padding: 80px 0;">
+        <div class="container" style="background-color: var(--primary); border-radius: 30px; padding: 60px; text-align: center; color: white;">
+            <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Subscribe to our Newsletter</h2>
+            <p style="font-size: 1.1rem; margin-bottom: 40px; opacity: 0.9;">Get weekly recipes, cooking tips, and exclusive offers straight to your inbox.</p>
+            <form class="newsletter-form" style="max-width: 500px; margin: 0 auto; display: flex; gap: 10px;">
+                <input type="email" placeholder="Enter your email address" required style="flex: 1; padding: 15px 25px; border-radius: 50px; border: none; outline: none;">
+                <button type="submit" class="btn" style="background-color: var(--text-dark); color: white;">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <div class="footer-logo"><i class="fas fa-utensils"></i> DishMaster</div>
+                    <p style="color: #ccc; margin-bottom: 25px;">Making cooking accessible and fun for everyone. From beginners to pros, we have something for you.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="recipes.html">All Recipes</a></li>
+                        <li><a href="videos.html">Video Tutorials</a></li>
+                        <li><a href="categories.html">Categories</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Chef Street, Food City</li>
+                        <li><i class="fas fa-phone"></i> +1 234 567 890</li>
+                        <li><i class="fas fa-envelope"></i> hello@dishmaster.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 DishMaster. All rights reserved. Designed with ❤️ for food lovers.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

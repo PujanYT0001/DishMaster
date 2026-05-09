@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Tutorials | DishMaster</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-utensils"></i> DishMaster
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="recipes.html">Recipes</a></li>
+                <li><a href="wishlist.html">Wishlist</a></li>
+                <li><a href="videos.html" class="active">Videos</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle"><i class="fas fa-moon"></i></button>
+                <a href="login.html" class="btn btn-outline">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <main style="padding-top: 120px; padding-bottom: 80px;">
+        <div class="container">
+            <div class="section-title" style="text-align: left; margin-bottom: 40px;">
+                <h1>Video Tutorials</h1>
+                <p>Master your cooking skills with step-by-step video guides from professional chefs.</p>
+            </div>
+
+            <!-- Video Grid -->
+            <div class="video-grid" id="videoTutorialGrid">
+                <!-- Content injected via JS -->
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-bottom" style="border-top: none;">
+                &copy; 2026 DishMaster. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const grid = document.getElementById('videoTutorialGrid');
+            if (grid) {
+                // Combine recipes with videos and separate video data
+                const allVideos = [
+                    ...window.videoData,
+                    ...window.recipeData.map(r => ({
+                        id: r.id,
+                        title: `How to cook ${r.name}`,
+                        thumbnail: `https://img.youtube.com/vi/${r.youtubeId}/maxresdefault.jpg`,
+                        duration: r.time,
+                        views: "New",
+                        youtubeId: r.youtubeId
+                    }))
+                ];
+
+                grid.innerHTML = allVideos.map(video => `
+                    <div class="video-card">
+                        <div class="video-thumb">
+                            <img src="${video.thumbnail}" alt="${video.title}">
+                            <div class="play-overlay">
+                                <a href="https://www.youtube.com/watch?v=${video.youtubeId}" target="_blank" class="play-btn">
+                                    <i class="fas fa-play"></i>
+                                </a>
+                            </div>
+                            <span style="position: absolute; bottom: 10px; right: 10px; background: rgba(0,0,0,0.8); color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem;">${video.duration}</span>
+                        </div>
+                        <div class="video-info">
+                            <h3 style="font-size: 1.1rem; margin-bottom: 5px; color: var(--text-dark);">${video.title}</h3>
+                            <div style="font-size: 0.8rem; color: var(--text-muted);">
+                                <i class="far fa-eye"></i> ${video.views}
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+/* 
+    DishMaster - Animations
+    Smooth transitions and micro-interactions
+*/
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInRight {
+    from { opacity: 0; transform: translateX(50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+.hero-text h1 {
+    animation: fadeIn 1s ease-out forwards;
+}
+
+.hero-text p {
+    animation: fadeIn 1.2s ease-out forwards;
+}
+
+.hero-image {
+    animation: slideInRight 1s ease-out forwards;
+}
+
+.category-card {
+    animation: fadeIn 0.5s ease-out forwards;
+    animation-delay: calc(var(--delay) * 0.1s);
+}
+
+.recipe-card {
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Hover effects */
+.btn:active {
+    transform: scale(0.95);
+}
+
+.search-container:focus-within {
+    box-shadow: 0 15px 40px rgba(255, 107, 53, 0.2);
+}
+
+/* Page transitions */
+body {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Dark mode transition */
+[data-theme] {
+    transition: background-color 0.5s ease, color 0.5s ease;
+}

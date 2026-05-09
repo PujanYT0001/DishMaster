@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile | DishMaster</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-utensils"></i> DishMaster
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="recipes.html">Recipes</a></li>
+                <li><a href="wishlist.html">Wishlist</a></li>
+                <li><a href="videos.html">Videos</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle"><i class="fas fa-moon"></i></button>
+                <button onclick="logout()" class="btn btn-outline btn-sm">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <main style="padding-top: 120px; padding-bottom: 80px;">
+        <div class="container">
+            <div class="profile-header" style="background: var(--bg-white); padding: 40px; border-radius: 30px; box-shadow: var(--card-shadow); display: flex; align-items: center; gap: 30px; margin-bottom: 50px;">
+                <div class="profile-avatar" style="width: 120px; height: 120px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="profile-info">
+                    <h1 id="userName">User Name</h1>
+                    <p id="userEmail" style="color: var(--text-muted);"></p>
+                    <div style="margin-top: 15px; display: flex; gap: 20px;">
+                        <span><strong id="savedCount">0</strong> Saved Recipes</span>
+                        <span><strong>2</strong> Reviews</span>
+                    </div>
+                </div>
+            </div>
+
+            <section class="saved-recipes">
+                <h2 style="margin-bottom: 30px;">My Saved Recipes</h2>
+                <div class="recipes-grid" id="savedRecipesGrid">
+                    <!-- Content injected via JS -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const user = JSON.parse(localStorage.getItem('dm-user'));
+            if (!user) {
+                window.location.href = 'login.html';
+                return;
+            }
+
+            document.getElementById('userName').textContent = user.name;
+            document.getElementById('userEmail').textContent = user.email;
+
+            renderSavedRecipes();
+        });
+
+        function renderSavedRecipes() {
+            const grid = document.getElementById('savedRecipesGrid');
+            const favorites = JSON.parse(localStorage.getItem('dm-favorites') || '[]');
+            
+            document.getElementById('savedCount').textContent = favorites.length;
+
+            if (favorites.length === 0) {
+                grid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 50px;"><p>You haven\'t saved any recipes yet.</p><a href="recipes.html" class="btn btn-primary" style="margin-top: 20px;">Browse Recipes</a></div>';
+                return;
+            }
+
+            const savedRecipes = window.recipeData.filter(r => favorites.includes(r.id));
+
+            grid.innerHTML = savedRecipes.map(recipe => `
+                <div class="recipe-card">
+                    <div class="recipe-img">
+                        <img src="${recipe.image}" alt="${recipe.name}">
+                    </div>
+                    <div class="recipe-info">
+                        <h3 class="recipe-name">${recipe.name}</h3>
+                        <div class="recipe-footer">
+                            <a href="recipe-detail.html?id=${recipe.id}" class="btn btn-primary btn-sm">View Recipe</a>
+                            <button onclick="removeFavorite('${recipe.id}')" style="color: var(--accent); font-size: 1.2rem;"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function removeFavorite(id) {
+            window.Utils.removeFromFavorites(id);
+            renderSavedRecipes();
+        }
+
+        function logout() {
+            localStorage.removeItem('dm-user');
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

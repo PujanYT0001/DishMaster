@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Details | DishMaster</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .recipe-header {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+            border-radius: 30px;
+            margin-bottom: 40px;
+        }
+        .recipe-header img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .header-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 40px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+        }
+        .meta-tags {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .meta-tag {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(5px);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        .detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 50px;
+        }
+        .ingredient-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .step-item {
+            margin-bottom: 30px;
+            padding-left: 50px;
+            position: relative;
+        }
+        .step-number {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 35px;
+            height: 35px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        .nutrition-card {
+            background: var(--bg-white);
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+            margin-top: 30px;
+        }
+        .nutrition-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .nut-item {
+            text-align: center;
+            padding: 10px;
+            background: var(--bg-cream);
+            border-radius: 10px;
+        }
+        .nut-val {
+            display: block;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .nut-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+        .video-container {
+            margin-top: 50px;
+            border-radius: 30px;
+            overflow: hidden;
+            aspect-ratio: 16/9;
+            box-shadow: var(--card-shadow);
+        }
+        .video-container iframe {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-utensils"></i> DishMaster
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="recipes.html">Recipes</a></li>
+                <li><a href="wishlist.html">Wishlist</a></li>
+                <li><a href="videos.html">Videos</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle"><i class="fas fa-moon"></i></button>
+                <button class="btn btn-outline save-btn"><i class="far fa-heart"></i> Add to Wishlist</button>
+            </div>
+        </div>
+    </nav>
+
+    <main style="padding-top: 120px; padding-bottom: 80px;">
+        <div class="container">
+            <div id="recipeDetailContent">
+                <!-- Content injected via JS -->
+                <div style="text-align: center; padding: 100px;">
+                    <i class="fas fa-spinner fa-spin fa-3x" style="color: var(--primary);"></i>
+                    <p style="margin-top: 20px;">Loading recipe details...</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-bottom" style="border-top: none;">
+                &copy; 2026 DishMaster. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/detail.js"></script>
+</body>
+</html>

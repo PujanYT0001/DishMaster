@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Recipes | DishMaster</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-utensils"></i> DishMaster
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="recipes.html" class="active">Recipes</a></li>
+                <li><a href="wishlist.html">Wishlist</a></li>
+                <li><a href="videos.html">Videos</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle"><i class="fas fa-moon"></i></button>
+                <a href="login.html" class="btn btn-outline">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <main style="padding-top: 120px;">
+        <div class="container">
+            <div class="recipes-header" style="margin-bottom: 40px;">
+                <h1>Discover Recipes</h1>
+                <p>Filter by cuisine, time, or difficulty to find your next favorite dish.</p>
+            </div>
+
+            <div class="recipes-layout" style="display: grid; grid-template-columns: 280px 1fr; gap: 40px;">
+                <aside class="filters-sidebar">
+                    <div class="filter-group">
+                        <h4 class="filter-header"><i class="fas fa-search"></i> Search</h4>
+                        <div class="filter-search-box">
+                            <i class="fas fa-search search-icon"></i>
+                            <input type="text" id="recipeSearch" placeholder="Find recipes...">
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <h4 class="filter-header"><i class="fas fa-utensils"></i> Categories</h4>
+                        <ul class="filter-list" id="categoryFilters">
+                            <li><label class="custom-checkbox"><input type="checkbox" value="Indian"><span class="checkmark"></span> Indian</label></li>
+                            <li><label class="custom-checkbox"><input type="checkbox" value="Chinese"><span class="checkmark"></span> Chinese</label></li>
+                            <li><label class="custom-checkbox"><input type="checkbox" value="Italian"><span class="checkmark"></span> Italian</label></li>
+                            <li><label class="custom-checkbox"><input type="checkbox" value="Fast Food"><span class="checkmark"></span> Fast Food</label></li>
+                            <li><label class="custom-checkbox"><input type="checkbox" value="Desserts"><span class="checkmark"></span> Desserts</label></li>
+                            <li><label class="custom-checkbox"><input type="checkbox" value="Healthy Food"><span class="checkmark"></span> Healthy</label></li>
+                            <li><label class="custom-checkbox"><input type="checkbox" value="Vegan"><span class="checkmark"></span> Vegan</label></li>
+                            <li><label class="custom-checkbox"><input type="checkbox" value="Street Food"><span class="checkmark"></span> Street Food</label></li>
+                            <li><label class="custom-checkbox"><input type="checkbox" value="Bakery"><span class="checkmark"></span> Bakery</label></li>
+                            <li><label class="custom-checkbox"><input type="checkbox" value="Breakfast"><span class="checkmark"></span> Breakfast</label></li>
+                            <li><label class="custom-checkbox"><input type="checkbox" value="Seafood"><span class="checkmark"></span> Seafood</label></li>
+                            <li><label class="custom-checkbox"><input type="checkbox" value="Drinks"><span class="checkmark"></span> Drinks</label></li>
+                        </ul>
+                    </div>
+
+                    <div class="filter-group">
+                        <h4 class="filter-header"><i class="fas fa-leaf"></i> Dietary</h4>
+                        <ul class="filter-list" id="dietaryFilters">
+                            <li><label class="custom-radio"><input type="radio" name="diet" value="all" checked><span class="radio-dot"></span> All</label></li>
+                            <li><label class="custom-radio"><input type="radio" name="diet" value="veg"><span class="radio-dot"></span> Vegetarian</label></li>
+                            <li><label class="custom-radio"><input type="radio" name="diet" value="non-veg"><span class="radio-dot"></span> Non-Vegetarian</label></li>
+                        </ul>
+                    </div>
+
+                    <div class="filter-group">
+                        <h4 class="filter-header"><i class="fas fa-tachometer-alt"></i> Difficulty</h4>
+                        <ul class="filter-list" id="difficultyFilters">
+                            <li><label class="custom-checkbox"><input type="checkbox" value="Easy"><span class="checkmark"></span> Easy</label></li>
+                            <li><label class="custom-checkbox"><input type="checkbox" value="Medium"><span class="checkmark"></span> Medium</label></li>
+                            <li><label class="custom-checkbox"><input type="checkbox" value="Hard"><span class="checkmark"></span> Hard</label></li>
+                        </ul>
+                    </div>
+                </aside>
+
+                <!-- Content Area -->
+                <div class="recipes-content">
+                    <div class="results-meta" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                        <span id="resultsCount">0 recipes found</span>
+                        <div class="sort-dropdown">
+                            Sort by: 
+                            <select id="sortSelect" style="padding: 5px 10px; border-radius: 5px; border: 1px solid var(--border-color); background: var(--bg-white); color: var(--text-dark);">
+                                <option value="newest">Newest</option>
+                                <option value="rating">Top Rated</option>
+                                <option value="time">Cook Time</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="recipes-grid" id="allRecipesGrid">
+                        <!-- Content injected via JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-bottom" style="border-top: none;">
+                &copy; 2026 DishMaster. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/recipes.js"></script>
+</body>
+</html>
