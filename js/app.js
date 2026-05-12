@@ -7,7 +7,30 @@ document.addEventListener('DOMContentLoaded', () => {
     initTheme();
     initNavbar();
     setupNewsletter();
+    updateAuthUI();
 });
+
+// Authentication UI Toggle
+function updateAuthUI() {
+    const user = JSON.parse(localStorage.getItem('dm-user'));
+    const loginBtn = document.getElementById('loginBtn');
+    const userProfileIcon = document.getElementById('userProfileIcon');
+
+    if (user && user.loggedIn) {
+        if (loginBtn) loginBtn.style.display = 'none';
+        if (userProfileIcon) {
+            userProfileIcon.style.display = 'flex';
+            // Load photo if exists
+            const savedPhoto = localStorage.getItem(`dm-profile-photo-${user.email}`);
+            if (savedPhoto) {
+                userProfileIcon.innerHTML = `<img src="${savedPhoto}" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;">`;
+            }
+        }
+    } else {
+        if (loginBtn) loginBtn.style.display = 'inline-flex';
+        if (userProfileIcon) userProfileIcon.style.display = 'none';
+    }
+}
 
 // Theme Management
 function initTheme() {

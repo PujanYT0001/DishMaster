@@ -90,8 +90,20 @@
             <a href="index.html" class="logo">
                 <i class="fas fa-utensils"></i> DishMaster
             </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="recipes.html">Recipes</a></li>
+                <li><a href="wishlist.html">Wishlist</a></li>
+                <li><a href="videos.html">Videos</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="profile.html" class="active">Profile</a></li>
+            </ul>
             <div class="nav-actions">
                 <button class="theme-toggle"><i class="fas fa-moon"></i></button>
+                <a href="login.html" class="btn btn-outline" id="loginBtn">Login</a>
+                <a href="profile.html" class="user-profile-icon" id="userProfileIcon" style="display:none">
+                    <i class="fas fa-user-circle fa-2x"></i>
+                </a>
             </div>
         </div>
     </nav>
@@ -108,13 +120,17 @@
                     <label>Full Name</label>
                     <input type="text" id="fullName" placeholder="Enter your name">
                 </div>
+                <div class="form-group" id="usernameGroup" style="display: none;">
+                    <label>Username</label>
+                    <input type="text" id="username" placeholder="Choose a username">
+                </div>
                 <div class="form-group">
                     <label>Email Address</label>
                     <input type="email" id="email" placeholder="Enter your email" required>
                 </div>
                 <div class="form-group">
                     <label>Password</label>
-                    <input type="password" id="password" placeholder="Create a password" required>
+                    <input type="password" id="password" placeholder="Enter your password" required>
                 </div>
                 
                 <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">
@@ -136,30 +152,66 @@
     <script>
         let currentMode = 'login';
 
-        function switchTab(mode) {
-            currentMode = mode;
-            document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
-            event.target.classList.add('active');
-            
-            const nameGroup = document.getElementById('nameGroup');
-            const submitText = document.getElementById('submitText');
-            
-            if (mode === 'signup') {
-                nameGroup.style.display = 'block';
-                submitText.textContent = 'Create Account';
-            } else {
-                nameGroup.style.display = 'none';
-                submitText.textContent = 'Login';
-            }
+function switchTab(mode) {
+    currentMode = mode;
+    // Update active tab based on mode
+    document.querySelectorAll('.auth-tab').forEach(tab => {
+        if ((mode === 'login' && tab.textContent.trim() === 'Login') ||
+            (mode === 'signup' && tab.textContent.trim() === 'Sign Up')) {
+            tab.classList.add('active');
+        } else {
+            tab.classList.remove('active');
         }
+    });
+    const nameGroup = document.getElementById('nameGroup');
+    const usernameGroup = document.getElementById('usernameGroup');
+    const submitText = document.getElementById('submitText');
+    const passwordInput = document.getElementById('password');
+
+    if (mode === 'signup') {
+        nameGroup.style.display = 'block';
+        usernameGroup.style.display = 'block';
+        submitText.textContent = 'Create Account';
+        passwordInput.placeholder = 'Create a password';
+    } else {
+        nameGroup.style.display = 'none';
+        usernameGroup.style.display = 'none';
+        submitText.textContent = 'Login';
+        passwordInput.placeholder = 'Enter your password';
+    }
+}
+
+        // Duplicate switchTab function removed – the earlier implementation handles tab switching.
+
 
         function handleAuth(e) {
             e.preventDefault();
             const email = document.getElementById('email').value;
-            const name = document.getElementById('fullName').value || 'User';
             
-            // Mock authentication
-            localStorage.setItem('dm-user', JSON.stringify({ email, name, loggedIn: true }));
+            // Try to get existing user data for this email (mock database)
+            let existingUser = JSON.parse(localStorage.getItem(`dm-user-data-${email}`));
+            
+            let name, username;
+            if (currentMode === 'signup') {
+                name = document.getElementById('fullName').value || 'User';
+                username = document.getElementById('username').value || name.toLowerCase().replace(/\s+/g, '');
+                // Save this user data permanently in our mock DB
+                existingUser = { email, name, username };
+                localStorage.setItem(`dm-user-data-${email}`, JSON.stringify(existingUser));
+            } else {
+                // Login mode
+                if (existingUser) {
+                    name = existingUser.name;
+                    username = existingUser.username;
+                } else {
+                    // Fallback for new login without previous signup
+                    name = 'User';
+                    username = 'user';
+                }
+            }
+            
+            // Set current session
+            localStorage.setItem('dm-user', JSON.stringify({ email, name, username, loggedIn: true }));
             alert(currentMode === 'login' ? 'Welcome back!' : 'Account created successfully!');
             window.location.href = 'profile.html';
         }
