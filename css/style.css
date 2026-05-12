@@ -3,27 +3,22 @@
     Modern, warm, food-themed aesthetics
 */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+@import url('https://api.fontshare.com/v2/css?f[]=clash-display@700,600,500&display=swap');
 
 :root {
-    /* Color Palette */
-    --primary: #FF6B35;
-    --primary-light: #FF8C42;
-    --accent: #E63946;
-    --bg-cream: #FFF8F0;
-    --bg-white: #FFFFFF;
-    --text-dark: #2D2D2D;
-    --text-muted: #666666;
-    --border-color: #EEEEEE;
-    --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-    --card-shadow-hover: 0 20px 40px rgba(255, 107, 53, 0.15);
+    /* Color Palette - Anti-Gravity Dark Space Theme */
+    --primary: #FF5C1A;
+    --primary-light: #FF7D45;
+    --accent: #FF5C1A;
+    --bg-cream: #0D0A07;
+    --bg-white: #16120E;
+    --text-dark: #F5F5F7;
+    --text-muted: #A1A1AA;
+    --border-color: rgba(255, 255, 255, 0.08);
+    --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    --card-shadow-hover: 0 20px 40px rgba(255, 92, 26, 0.15);
     
-    /* Dark Mode Colors */
-    --dark-bg: #121212;
-    --dark-card: #1E1E1E;
-    --dark-text: #F0F0F0;
-    --dark-border: #333333;
-
     /* Transitions */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     
@@ -32,13 +27,9 @@
     --container-width: 1200px;
 }
 
-[data-theme="dark"] {
-    --bg-cream: var(--dark-bg);
-    --bg-white: var(--dark-card);
-    --text-dark: var(--dark-text);
-    --text-muted: #AAAAAA;
-    --border-color: var(--dark-border);
-    --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+[data-theme="light"] {
+    /* We'll keep the dark theme as the default, if user switches to light, we can define it here if needed, 
+       but user requested 'all page is black and orange', so we make dark the default. */
 }
 
 /* Reset & Base Styles */
@@ -49,7 +40,7 @@
 }
 
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Outfit', sans-serif;
     background-color: var(--bg-cream);
     color: var(--text-dark);
     line-height: 1.6;
@@ -58,8 +49,9 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Playfair Display', serif;
-    font-weight: 800;
+    font-family: 'Clash Display', sans-serif;
+    font-weight: 700;
+    letter-spacing: -1px;
 }
 
 a {
@@ -83,6 +75,21 @@ button {
     outline: none;
     background: none;
     font-family: inherit;
+}
+
+select, input, textarea {
+    font-family: inherit;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+    color: white;
+    outline: none;
+    border-radius: 8px;
+    padding: 8px 12px;
+}
+
+option {
+    background: #1A1612;
+    color: white;
 }
 
 /* Reusable Components */
@@ -128,8 +135,8 @@ button {
 /* Navigation */
 nav {
     height: var(--nav-height);
-    background-color: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(10px);
+    background-color: rgba(13, 10, 7, 0.8);
+    backdrop-filter: blur(20px);
     position: fixed;
     top: 0;
     left: 0;
@@ -154,12 +161,17 @@ nav .container {
 
 .logo {
     font-size: 1.8rem;
-    font-family: 'Playfair Display', serif;
-    font-weight: 900;
-    color: var(--primary);
+    font-family: 'Clash Display', sans-serif;
+    font-weight: 700;
+    color: white;
     display: flex;
     align-items: center;
     gap: 10px;
+    letter-spacing: -0.5px;
+}
+
+.logo i {
+    color: var(--primary);
 }
 
 .nav-links {
@@ -201,11 +213,7 @@ nav .container {
     padding-bottom: 80px;
     position: relative;
     overflow: hidden;
-    background: linear-gradient(135deg, #FFF8F0 0%, #FFFFFF 100%);
-}
-
-[data-theme="dark"] .hero {
-    background: linear-gradient(135deg, #121212 0%, #1a1a1a 100%);
+    background: radial-gradient(circle at 50% 50%, #1a0f08 0%, #0D0A07 100%);
 }
 
 .hero-content {
@@ -324,7 +332,7 @@ nav .container {
 
 .recipe-card {
     background: var(--bg-white);
-    border-radius: 20px;
+    border-radius: 24px;
     overflow: hidden;
     box-shadow: var(--card-shadow);
     transition: var(--transition-smooth);
@@ -466,10 +474,11 @@ nav .container {
 
 /* Footer */
 footer {
-    background-color: var(--text-dark);
+    background-color: #080604;
     color: white;
     padding: 80px 0 40px;
     margin-top: 100px;
+    border-top: 1px solid var(--border-color);
 }
 
 .footer-content {
@@ -613,11 +622,12 @@ footer {
  padding: 12px 15px 12px 40px;
  border-radius: 12px;
  border: 1.5px solid var(--border-color);
- background: var(--bg-cream);
+ background: rgba(255, 255, 255, 0.03);
  font-family: inherit;
  font-size: 0.95rem;
  transition: var(--transition-smooth);
  outline: none;
+ color: white;
 }
 
 .filter-search-box input:focus {

@@ -8,6 +8,7 @@
     
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/hero.css">
     
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -39,27 +40,56 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <header class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1>Learn to Cook <span>Delicious Dishes</span> Easily</h1>
-                    <p>Master the art of cooking with our expert-led video tutorials and step-by-step written recipes for every cuisine.</p>
-                    <div class="search-container">
-                        <input type="text" id="homeSearch" placeholder="Search recipes (e.g. Butter Chicken, Pasta)...">
-                        <button class="btn btn-primary" id="searchBtn">
-                            <i class="fas fa-search"></i> Search
-                        </button>
+    <!-- Anti-Gravity Core Hero -->
+    <header class="hero-anti-gravity">
+        <div class="container-hero">
+            <div class="hero-text-content">
+                <div class="hero-eyebrow">
+                    <span class="live-dot"></span> Live Now: Chef Marco's Kitchen
+                </div>
+                <h1 class="hero-title">Master the Art of <span>Delicious</span> Cooking</h1>
+                <p class="hero-description">Discover curated recipes and expert-led tutorials that orbit around your culinary passion. From street food to fine dining.</p>
+                
+                <div class="hero-search-wrapper">
+                    <input type="text" class="hero-search-input" placeholder="Search 5,000+ recipes...">
+                    <button class="search-icon-btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+
+                <div class="stats-row">
+                    <div class="stat-item">
+                        <span class="stat-value">12k+</span>
+                        <span class="stat-label">Recipes</span>
                     </div>
-                    <div class="trending-keywords" style="margin-top: 15px; font-size: 0.9rem; color: var(--text-muted);">
-                        Trending: <a href="#">Indian</a>, <a href="#">Quick Meals</a>, <a href="#">Healthy</a>
+                    <div class="stat-item">
+                        <span class="stat-value">4.9/5</span>
+                        <span class="stat-label">Rating</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">800k+</span>
+                        <span class="stat-label">Cooks</span>
                     </div>
                 </div>
-                <div class="hero-image">
-                    <!-- This image should be copied to assets/images/hero_food_spread.png -->
-                    <img src="assets/images/hero_food_spread.png" alt="Delicious Food Spread" id="heroImg">
+            </div>
+
+            <div class="hero-visual-core">
+                <div class="orbital-system">
+                    <!-- Central Hero Dish -->
+                    <div class="hero-dish-wrapper">
+                        <img src="assets/images/hero_dish.png" alt="Signature Dish" class="hero-dish-image">
+                    </div>
+                    <!-- Orbital Rings -->
+                    <div class="orbital-ring ring-1"></div>
+                    <div class="orbital-ring ring-2"></div>
                 </div>
+            </div>
+        </div>
+
+        <!-- Trending Ticker -->
+        <div class="trending-ticker-container">
+            <div class="ticker-wrap">
+                <!-- Injected via JS -->
             </div>
         </div>
     </header>
@@ -141,7 +171,7 @@
     </section>
 
     <!-- Trending Videos -->
-    <section class="trending-videos" style="padding: 80px 0; background-color: var(--bg-white);">
+    <section class="trending-videos" style="padding: 80px 0; background-color: var(--bg-dark-space);">
         <div class="container">
             <div class="section-title">
                 <h2>Trending Video Recipes</h2>
@@ -154,13 +184,14 @@
     </section>
 
     <!-- Newsletter -->
-    <section class="newsletter" style="padding: 80px 0;">
-        <div class="container" style="background-color: var(--primary); border-radius: 30px; padding: 60px; text-align: center; color: white;">
-            <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Subscribe to our Newsletter</h2>
-            <p style="font-size: 1.1rem; margin-bottom: 40px; opacity: 0.9;">Get weekly recipes, cooking tips, and exclusive offers straight to your inbox.</p>
-            <form class="newsletter-form" style="max-width: 500px; margin: 0 auto; display: flex; gap: 10px;">
-                <input type="email" placeholder="Enter your email address" required style="flex: 1; padding: 15px 25px; border-radius: 50px; border: none; outline: none;">
-                <button type="submit" class="btn" style="background-color: var(--text-dark); color: white;">Subscribe</button>
+    <section class="newsletter" style="padding: 100px 0;">
+        <div class="container" style="background: linear-gradient(135deg, var(--accent-orange) 0%, #b33d00 100%); border-radius: 40px; padding: 80px; text-align: center; color: white; position: relative; overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.5);">
+            <div style="position: absolute; top: -50px; right: -50px; width: 200px; height: 200px; background: rgba(255,255,255,0.1); border-radius: 50%;"></div>
+            <h2 style="font-family: 'Clash Display', sans-serif; font-size: 3rem; margin-bottom: 20px; letter-spacing: -1px;">Join the Culinary Inner Circle</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 40px; opacity: 0.9; max-width: 600px; margin-left: auto; margin-right: auto;">Get exclusive access to masterclasses, seasonal recipes, and pro kitchen secrets.</p>
+            <form class="newsletter-form" style="max-width: 550px; margin: 0 auto; display: flex; gap: 15px; background: rgba(255,255,255,0.1); padding: 10px; border-radius: 100px; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2);">
+                <input type="email" placeholder="Enter your email address" required style="flex: 1; padding: 15px 25px; border-radius: 50px; border: none; outline: none; background: transparent; color: white;">
+                <button type="submit" class="btn" style="background-color: white; color: var(--accent-orange); font-weight: 700; padding: 15px 35px; border-radius: 50px;">Subscribe</button>
             </form>
         </div>
     </section>
@@ -214,6 +245,7 @@
 
     <!-- Scripts -->
     <script src="js/data.js"></script>
+    <script src="js/hero.js"></script>
     <script src="js/app.js"></script>
     <script src="js/main.js"></script>
 </body>
