@@ -34,29 +34,9 @@ function updateAuthUI() {
 
 // Theme Management
 function initTheme() {
-    const themeToggle = document.querySelector('.theme-toggle');
-    const savedTheme = localStorage.getItem('dish-master-theme') || 'dark';
-    
-    document.documentElement.setAttribute('data-theme', savedTheme);
-    updateThemeIcon(savedTheme);
-
-    if (themeToggle) {
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            
-            document.documentElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('dish-master-theme', newTheme);
-            updateThemeIcon(newTheme);
-        });
-    }
-}
-
-function updateThemeIcon(theme) {
-    const icon = document.querySelector('.theme-toggle i');
-    if (icon) {
-        icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
-    }
+    // Always enforce dark theme for the new Dark Space aesthetic
+    document.documentElement.setAttribute('data-theme', 'dark');
+    localStorage.setItem('dish-master-theme', 'dark');
 }
 
 // Navbar Scroll Effect
@@ -64,15 +44,11 @@ function initNavbar() {
     const nav = document.querySelector('nav');
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
-            nav.style.backgroundColor = document.documentElement.getAttribute('data-theme') === 'dark' 
-                ? 'rgba(18, 18, 18, 0.95)' 
-                : 'rgba(255, 255, 255, 0.95)';
-            nav.style.boxShadow = '0 5px 20px rgba(0,0,0,0.1)';
+            nav.style.backgroundColor = 'rgba(13, 10, 7, 0.95)';
+            nav.style.boxShadow = '0 10px 30px rgba(0,0,0,0.5)';
             nav.style.height = '70px';
         } else {
-            nav.style.backgroundColor = document.documentElement.getAttribute('data-theme') === 'dark'
-                ? 'rgba(18, 18, 18, 0.8)'
-                : 'rgba(255, 255, 255, 0.8)';
+            nav.style.backgroundColor = 'rgba(13, 10, 7, 0.8)';
             nav.style.boxShadow = 'none';
             nav.style.height = '80px';
         }

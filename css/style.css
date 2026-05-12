@@ -28,13 +28,8 @@
 }
 
 [data-theme="light"] {
-    --bg-cream: #FFF8F0;
-    --bg-white: #FFFFFF;
-    --text-dark: #2D2D2D;
-    --text-muted: #666666;
-    --border-color: #EEEEEE;
-    --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-    --card-shadow-hover: 0 20px 40px rgba(255, 92, 26, 0.15);
+    /* We'll keep the dark theme as the default, if user switches to light, we can define it here if needed, 
+       but user requested 'all page is black and orange', so we make dark the default. */
 }
 
 /* Reset & Base Styles */

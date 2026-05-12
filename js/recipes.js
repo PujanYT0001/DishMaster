@@ -38,8 +38,8 @@ function renderRecipes() {
         <div class="recipe-card">
             <div class="recipe-img" style="position: relative;">
                 <img src="${recipe.image}" alt="${recipe.name}">
-                <button class="wishlist-btn" onclick="window.toggleWishlist('${recipe.id}', this, event)" style="position: absolute; top: 10px; right: 10px; background: white; border: none; border-radius: 50%; width: 35px; height: 35px; display: flex; justify-content: center; align-items: center; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 2; transition: all 0.3s ease;">
-                    <i class="${window.Utils.isFavorite(recipe.id) ? 'fas' : 'far'} fa-heart" style="color: ${window.Utils.isFavorite(recipe.id) ? 'var(--primary-color, red)' : '#666'}; font-size: 1.2rem;"></i>
+                <button class="wishlist-btn" onclick="window.toggleWishlist('${recipe.id}', this, event)" style="position: absolute; top: 10px; right: 10px; background: rgba(0, 0, 0, 0.4); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 50%; width: 35px; height: 35px; display: flex; justify-content: center; align-items: center; cursor: pointer; z-index: 2; transition: all 0.3s ease;">
+                    <i class="${window.Utils.isFavorite(recipe.id) ? 'fas' : 'far'} fa-heart" style="color: ${window.Utils.isFavorite(recipe.id) ? 'var(--primary)' : 'white'}; font-size: 1.2rem;"></i>
                 </button>
             </div>
             <div class="recipe-info">

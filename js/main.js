@@ -87,21 +87,21 @@ function setupHomeSearch() {
 }
 
 /* Global UI Features */
-window.addEventListener(" scroll\, () => {
- const scrollBtn = document.querySelector(.scroll-top-btn);
- if (scrollBtn) {
- if (window.scrollY > 300) {
- scrollBtn.classList.add(\show\);
- } else {
- scrollBtn.classList.remove(\show\);
- }
- }
+window.addEventListener("scroll", () => {
+    const scrollBtn = document.querySelector(".scroll-top-btn");
+    if (scrollBtn) {
+        if (window.scrollY > 300) {
+            scrollBtn.classList.add("show");
+        } else {
+            scrollBtn.classList.remove("show");
+        }
+    }
 });
 
 function scrollToTop() {
- window.scrollTo({
- top: 0,
- behavior: \smooth\
- });
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
 }
 
