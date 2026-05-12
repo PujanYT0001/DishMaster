@@ -35,7 +35,7 @@ function updateAuthUI() {
 // Theme Management
 function initTheme() {
     const themeToggle = document.querySelector('.theme-toggle');
-    const savedTheme = localStorage.getItem('dish-master-theme') || 'light';
+    const savedTheme = localStorage.getItem('dish-master-theme') || 'dark';
     
     document.documentElement.setAttribute('data-theme', savedTheme);
     updateThemeIcon(savedTheme);
@@ -43,7 +43,7 @@ function initTheme() {
     if (themeToggle) {
         themeToggle.addEventListener('click', () => {
             const currentTheme = document.documentElement.getAttribute('data-theme');
-            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
             
             document.documentElement.setAttribute('data-theme', newTheme);
             localStorage.setItem('dish-master-theme', newTheme);
@@ -55,7 +55,7 @@ function initTheme() {
 function updateThemeIcon(theme) {
     const icon = document.querySelector('.theme-toggle i');
     if (icon) {
-        icon.className = theme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+        icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
     }
 }
 
