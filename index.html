@@ -3,8 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DishMaster | Learn to Cook Delicious Dishes Easily</title>
-    <meta name="description" content="Discover thousands of delicious recipes with easy-to-follow instructions and video tutorials. Start your cooking journey with DishMaster today!">
+    <title>DishMaster | Premium Dark Dining</title>
+    <meta name="description" content="Experience the finest culinary delights at DishMaster. Dark-themed, premium dining experience.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
@@ -14,236 +19,162 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Navigation -->
+
+    <!-- Navbar -->
     <nav>
         <div class="container">
-            <a href="index.html" class="logo">
-                <i class="fas fa-utensils"></i> DishMaster
+            <a href="index.html" class="logo" id="main-logo">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11 9H9V2H7V9H5V2H3V9C3 11.12 4.66 12.84 6.75 12.97V22H9.25V12.97C11.34 12.84 13 11.12 13 9V2H11V9ZM16 6V14H18.5V22H21V2C18.24 2 16 4.24 16 6Z"/>
+                </svg>
+                <span>DISH<b>MASTER</b></span>
             </a>
+            
             <ul class="nav-links">
                 <li><a href="index.html" class="active">Home</a></li>
                 <li><a href="recipes.html">Recipes</a></li>
                 <li><a href="wishlist.html">Wishlist</a></li>
                 <li><a href="videos.html">Videos</a></li>
-                <li><a href="about.html">About</a></li>
                 <li><a href="profile.html">Profile</a></li>
             </ul>
-            <div class="nav-actions">
-                <a href="login.html" class="btn btn-outline" id="loginBtn">Login</a>
-                <a href="profile.html" class="user-profile-icon" id="userProfileIcon" style="display:none">
-                    <i class="fas fa-user-circle fa-2x"></i>
-                </a>
+            
+            <div class="nav-right">
+                <div class="profile-avatar" id="nav-profile-btn" style="margin-right: 15px;">
+                    <img id="navProfileImg" src="https://images.unsplash.com/photo-1583394293214-28dea15ee548?auto=format&fit=crop&q=80&w=200&h=200" alt="Profile">
+                </div>
+                <a href="login.html" class="logout-link">LOGOUT</a>
             </div>
         </div>
     </nav>
 
-    <!-- Anti-Gravity Core Hero -->
-    <header class="hero-anti-gravity">
-        <div class="container-hero">
-            <div class="hero-text-content">
-                <div class="hero-eyebrow">
-                    <span class="live-dot"></span> Live Now: Chef Marco's Kitchen
-                </div>
-                <h1 class="hero-title">Master the Art of <span>Delicious</span> Cooking</h1>
-                <p class="hero-description">Discover curated recipes and expert-led tutorials that orbit around your culinary passion. From street food to fine dining.</p>
-                
-                <div class="hero-search-wrapper">
-                    <input type="text" class="hero-search-input" placeholder="Search 5,000+ recipes...">
-                    <button class="search-icon-btn">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </div>
-
-                <div class="stats-row">
-                    <div class="stat-item">
-                        <span class="stat-value">12k+</span>
-                        <span class="stat-label">Recipes</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-value">4.9/5</span>
-                        <span class="stat-label">Rating</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-value">800k+</span>
-                        <span class="stat-label">Cooks</span>
-                    </div>
-                </div>
+    <!-- Hero Section -->
+    <header class="hero">
+        <canvas id="hero-canvas"></canvas>
+        <div class="hero-content">
+            <h1 class="hero-title">DISH<span>MASTER</span></h1>
+            <p class="hero-subtitle">Where every plate tells a story</p>
+            
+            <div class="hero-search-wrapper">
+                <input type="text" placeholder="Search for recipes, cuisines, or ingredients..." id="heroSearchInput">
+                <button id="heroSearchBtn">
+                    <i class="fas fa-search"></i>
+                </button>
             </div>
 
-            <div class="hero-visual-core">
-                <div class="orbital-system">
-                    <!-- Central Hero Dish -->
-                    <div class="hero-dish-wrapper">
-                        <img src="assets/images/hero_dish.png" alt="Signature Dish" class="hero-dish-image">
-                    </div>
-                    <!-- Orbital Rings -->
-                    <div class="orbital-ring ring-1"></div>
-                    <div class="orbital-ring ring-2"></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Trending Ticker -->
-        <div class="trending-ticker-container">
-            <div class="ticker-wrap">
-                <!-- Injected via JS -->
+            <div class="hero-btns">
+                <a href="recipes.html" class="btn btn-primary">Explore Menu</a>
             </div>
         </div>
     </header>
 
-    <!-- Categories Section -->
-    <section class="categories" style="padding: 80px 0;">
-        <div class="container">
-            <div class="section-title">
-                <h2>Explore Categories</h2>
-                <p>Browse through our wide range of food categories</p>
+    <!-- Stats Bar -->
+    <div class="stats-bar">
+        <div class="container stats-container">
+            <div class="stat-item">
+                <span class="stat-number">250+</span>
+                <span class="stat-label">Recipes</span>
             </div>
-            <div class="categories-grid">
-                <a href="recipes.html?cat=Indian" class="category-card">
-                    <div class="category-icon">🇮🇳</div>
-                    <div class="category-name">Indian</div>
-                </a>
-                <a href="recipes.html?cat=Chinese" class="category-card">
-                    <div class="category-icon">🍜</div>
-                    <div class="category-name">Chinese</div>
-                </a>
-                <a href="recipes.html?cat=Italian" class="category-card">
-                    <div class="category-icon">🍕</div>
-                    <div class="category-name">Italian</div>
-                </a>
-                <a href="recipes.html?cat=Fast Food" class="category-card">
-                    <div class="category-icon">🍔</div>
-                    <div class="category-name">Fast Food</div>
-                </a>
-                <a href="recipes.html?cat=Desserts" class="category-card">
-                    <div class="category-icon">🍰</div>
-                    <div class="category-name">Desserts</div>
-                </a>
-                <a href="recipes.html?cat=Healthy Food" class="category-card">
-                    <div class="category-icon">🥗</div>
-                    <div class="category-name">Healthy</div>
-                </a>
-                <a href="recipes.html?cat=Drinks" class="category-card">
-                    <div class="category-icon">🥤</div>
-                    <div class="category-name">Drinks</div>
-                </a>
-                <a href="recipes.html?cat=Vegan" class="category-card">
-                    <div class="category-icon">🌿</div>
-                    <div class="category-name">Vegan</div>
-                </a>
-                <a href="recipes.html?cat=Street Food" class="category-card">
-                    <div class="category-icon">🌮</div>
-                    <div class="category-name">Street Food</div>
-                </a>
-                <a href="recipes.html?cat=Bakery" class="category-card">
-                    <div class="category-icon">🥐</div>
-                    <div class="category-name">Bakery</div>
-                </a>
-                <a href="recipes.html?cat=Breakfast" class="category-card">
-                    <div class="category-icon">🍳</div>
-                    <div class="category-name">Breakfast</div>
-                </a>
-                <a href="recipes.html?cat=Seafood" class="category-card">
-                    <div class="category-icon">🐟</div>
-                    <div class="category-name">Seafood</div>
-                </a>
+            <div class="stat-item">
+                <span class="stat-number">40K</span>
+                <span class="stat-label">Happy Guests</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">18</span>
+                <span class="stat-label">Expert Chefs</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">12</span>
+                <span class="stat-label">Awards Won</span>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- Featured Recipes -->
-    <section class="featured" style="padding: 0 0 80px;">
+    <!-- Food Category Grid -->
+    <section class="categories">
         <div class="container">
-            <div class="section-title" style="text-align: left; display: flex; justify-content: space-between; align-items: flex-end;">
-                <div>
-                    <h2>Featured Recipes</h2>
-                    <p>Hand-picked recipes for you this week</p>
+            <h2 class="section-title">Browse Our Menu</h2>
+            <div class="category-grid">
+                <div class="category-card" data-category="Indian">
+                    <span class="category-icon">🍛</span>
+                    <span class="category-name">Indian</span>
                 </div>
-                <a href="recipes.html" class="btn btn-outline">View All</a>
-            </div>
-            <div class="recipes-grid" id="featuredGrid">
-                <!-- Recipes will be injected here via JS -->
+                <div class="category-card" data-category="Chinese">
+                    <span class="category-icon">🍜</span>
+                    <span class="category-name">Chinese</span>
+                </div>
+                <div class="category-card" data-category="Italian">
+                    <span class="category-icon">🍕</span>
+                    <span class="category-name">Italian</span>
+                </div>
+                <div class="category-card" data-category="Fast Food">
+                    <span class="category-icon">🍔</span>
+                    <span class="category-name">Fast Food</span>
+                </div>
+                <div class="category-card" data-category="Desserts">
+                    <span class="category-icon">🍰</span>
+                    <span class="category-name">Desserts</span>
+                </div>
+                <div class="category-card" data-category="Healthy">
+                    <span class="category-icon">🥗</span>
+                    <span class="category-name">Healthy</span>
+                </div>
+                <div class="category-card" data-category="Drinks">
+                    <span class="category-icon">🧃</span>
+                    <span class="category-name">Drinks</span>
+                </div>
+                <div class="category-card" data-category="Vegan">
+                    <span class="category-icon">🥬</span>
+                    <span class="category-name">Vegan</span>
+                </div>
+                <div class="category-card" data-category="Street Food">
+                    <span class="category-icon">🌮</span>
+                    <span class="category-name">Street Food</span>
+                </div>
+                <div class="category-card" data-category="Bakery">
+                    <span class="category-icon">🥐</span>
+                    <span class="category-name">Bakery</span>
+                </div>
+                <div class="category-card" data-category="Breakfast">
+                    <span class="category-icon">🍳</span>
+                    <span class="category-name">Breakfast</span>
+                </div>
+                <div class="category-card" data-category="Seafood">
+                    <span class="category-icon">🐟</span>
+                    <span class="category-name">Seafood</span>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Trending Videos -->
-    <section class="trending-videos" style="padding: 80px 0; background-color: var(--bg-dark-space);">
-        <div class="container">
-            <div class="section-title">
-                <h2>Trending Video Recipes</h2>
-                <p>Watch and learn from the best chefs</p>
-            </div>
-            <div class="video-grid" id="trendingVideoGrid">
-                <!-- Videos will be injected here via JS -->
-            </div>
-        </div>
-    </section>
 
-    <!-- Newsletter -->
-    <section class="newsletter" style="padding: 100px 0;">
-        <div class="container" style="background: linear-gradient(135deg, var(--accent-orange) 0%, #b33d00 100%); border-radius: 40px; padding: 80px; text-align: center; color: white; position: relative; overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.5);">
-            <div style="position: absolute; top: -50px; right: -50px; width: 200px; height: 200px; background: rgba(255,255,255,0.1); border-radius: 50%;"></div>
-            <h2 style="font-family: 'Clash Display', sans-serif; font-size: 3rem; margin-bottom: 20px; letter-spacing: -1px;">Join the Culinary Inner Circle</h2>
-            <p style="font-size: 1.2rem; margin-bottom: 40px; opacity: 0.9; max-width: 600px; margin-left: auto; margin-right: auto;">Get exclusive access to masterclasses, seasonal recipes, and pro kitchen secrets.</p>
-            <form class="newsletter-form" style="max-width: 550px; margin: 0 auto; display: flex; gap: 15px; background: rgba(255,255,255,0.1); padding: 10px; border-radius: 100px; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2);">
-                <input type="email" placeholder="Enter your email address" required style="flex: 1; padding: 15px 25px; border-radius: 50px; border: none; outline: none; background: transparent; color: white;">
-                <button type="submit" class="btn" style="background-color: white; color: var(--accent-orange); font-weight: 700; padding: 15px 35px; border-radius: 50px;">Subscribe</button>
-            </form>
-        </div>
-    </section>
 
     <!-- Footer -->
     <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-info">
-                    <div class="footer-logo"><i class="fas fa-utensils"></i> DishMaster</div>
-                    <p style="color: #ccc; margin-bottom: 25px;">Making cooking accessible and fun for everyone. From beginners to pros, we have something for you.</p>
-                    <div class="social-links">
-                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-                <div class="footer-links">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="recipes.html">All Recipes</a></li>
-                        <li><a href="videos.html">Video Tutorials</a></li>
-                        <li><a href="categories.html">Categories</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>Support</h4>
-                    <ul>
-                        <li><a href="#">Help Center</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>Contact</h4>
-                    <ul>
-                        <li><i class="fas fa-map-marker-alt"></i> 123 Chef Street, Food City</li>
-                        <li><i class="fas fa-phone"></i> +1 234 567 890</li>
-                        <li><i class="fas fa-envelope"></i> hello@dishmaster.com</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                &copy; 2026 DishMaster. All rights reserved. Designed with ❤️ for food lovers.
-            </div>
+        <div class="container footer-container">
+            <div class="footer-logo">DISHMASTER</div>
+            <div class="copyright">&copy; 2026 DishMaster. All rights reserved.</div>
         </div>
     </footer>
 
     <!-- Scripts -->
-    <script src="js/data.js"></script>
-    <script src="js/hero.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/hero-animation.js"></script>
+    <script>
+        // Category navigation
+        document.querySelectorAll('.category-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const category = card.getAttribute('data-category');
+                window.location.href = `recipes.html?cat=${category}`;
+            });
+        });
+
+        // Load profile photo
+        const user = JSON.parse(localStorage.getItem('dm-user'));
+        if (user) {
+            const savedPhoto = localStorage.getItem(`dm-profile-photo-${user.email}`);
+            if (savedPhoto) {
+                document.getElementById('navProfileImg').src = savedPhoto;
+            }
+        }
+    </script>
 </body>
 </html>

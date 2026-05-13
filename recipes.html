@@ -4,58 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Recipes | DishMaster</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body>
+<body class="recipes-page">
+    <!-- Navbar -->
     <nav>
         <div class="container">
             <a href="index.html" class="logo">
-                <i class="fas fa-utensils"></i> DishMaster
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width: 30px; fill: #FF6A00;">
+                    <path d="M11 9H9V2H7V9H5V2H3V9C3 11.12 4.66 12.84 6.75 12.97V22H9.25V12.97C11.34 12.84 13 11.12 13 9V2H11V9ZM16 6V14H18.5V22H21V2C18.24 2 16 4.24 16 6Z"/>
+                </svg>
+                <span>DISH<b>MASTER</b></span>
             </a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="recipes.html" class="active">Recipes</a></li>
                 <li><a href="wishlist.html">Wishlist</a></li>
                 <li><a href="videos.html">Videos</a></li>
-                <li><a href="about.html">About</a></li>
                 <li><a href="profile.html">Profile</a></li>
             </ul>
-            <div class="nav-actions">
-                <a href="login.html" class="btn btn-outline" id="loginBtn">Login</a>
-                <a href="profile.html" class="user-profile-icon" id="userProfileIcon" style="display:none">
-                    <i class="fas fa-user-circle fa-2x"></i>
-                </a>
+            <div class="nav-right">
+                <div class="profile-avatar" style="margin-right: 15px;">
+                    <img id="navProfileImg" src="https://images.unsplash.com/photo-1583394293214-28dea15ee548?auto=format&fit=crop&q=80&w=200&h=200" alt="Profile">
+                </div>
+                <a href="login.html" class="logout-link">LOGOUT</a>
             </div>
         </div>
     </nav>
 
-    <main style="padding-top: 120px;">
+    <main style="padding-top: 120px; padding-bottom: 100px;">
         <div class="container">
-            <div class="recipes-header" style="margin-bottom: 40px;">
-                <h1>Discover Recipes</h1>
-                <p>Filter by cuisine, time, or difficulty to find your next favorite dish.</p>
+            <div class="recipes-header" style="margin-bottom: 60px;">
+                <h1 class="section-title" style="text-align: left; margin-bottom: 10px;">Discover Recipes</h1>
+                <p style="color: var(--text-gray); font-size: 1.1rem;">Filter by cuisine, time, or difficulty to find your next favorite dish.</p>
             </div>
 
-            <div class="recipes-layout" style="display: grid; grid-template-columns: 280px 1fr; gap: 40px;">
+            <div class="recipes-layout" style="display: grid; grid-template-columns: 320px 1fr; gap: 50px;">
+                <!-- Sidebar Filters -->
                 <aside class="filters-sidebar">
                     <div class="filter-group">
-                        <h4 class="filter-header"><i class="fas fa-search"></i> Search</h4>
+                        <h4 class="filter-header"><i class="fas fa-search"></i> SEARCH</h4>
                         <div class="filter-search-box">
-                            <i class="fas fa-search search-icon"></i>
+                            <i class="fas fa-search"></i>
                             <input type="text" id="recipeSearch" placeholder="Find recipes...">
                         </div>
                     </div>
 
                     <div class="filter-group">
-                        <h4 class="filter-header"><i class="fas fa-utensils"></i> Categories</h4>
+                        <h4 class="filter-header"><i class="fas fa-utensils"></i> CATEGORIES</h4>
                         <ul class="filter-list" id="categoryFilters">
                             <li><label class="custom-checkbox"><input type="checkbox" value="Indian"><span class="checkmark"></span> Indian</label></li>
                             <li><label class="custom-checkbox"><input type="checkbox" value="Chinese"><span class="checkmark"></span> Chinese</label></li>
                             <li><label class="custom-checkbox"><input type="checkbox" value="Italian"><span class="checkmark"></span> Italian</label></li>
                             <li><label class="custom-checkbox"><input type="checkbox" value="Fast Food"><span class="checkmark"></span> Fast Food</label></li>
                             <li><label class="custom-checkbox"><input type="checkbox" value="Desserts"><span class="checkmark"></span> Desserts</label></li>
-                            <li><label class="custom-checkbox"><input type="checkbox" value="Healthy Food"><span class="checkmark"></span> Healthy</label></li>
+                            <li><label class="custom-checkbox"><input type="checkbox" value="Healthy"><span class="checkmark"></span> Healthy</label></li>
                             <li><label class="custom-checkbox"><input type="checkbox" value="Vegan"><span class="checkmark"></span> Vegan</label></li>
                             <li><label class="custom-checkbox"><input type="checkbox" value="Street Food"><span class="checkmark"></span> Street Food</label></li>
                             <li><label class="custom-checkbox"><input type="checkbox" value="Bakery"><span class="checkmark"></span> Bakery</label></li>
@@ -66,7 +77,7 @@
                     </div>
 
                     <div class="filter-group">
-                        <h4 class="filter-header"><i class="fas fa-leaf"></i> Dietary</h4>
+                        <h4 class="filter-header"><i class="fas fa-leaf"></i> DIETARY</h4>
                         <ul class="filter-list" id="dietaryFilters">
                             <li><label class="custom-radio"><input type="radio" name="diet" value="all" checked><span class="radio-dot"></span> All</label></li>
                             <li><label class="custom-radio"><input type="radio" name="diet" value="veg"><span class="radio-dot"></span> Vegetarian</label></li>
@@ -75,7 +86,7 @@
                     </div>
 
                     <div class="filter-group">
-                        <h4 class="filter-header"><i class="fas fa-tachometer-alt"></i> Difficulty</h4>
+                        <h4 class="filter-header"><i class="fas fa-tachometer-alt"></i> DIFFICULTY</h4>
                         <ul class="filter-list" id="difficultyFilters">
                             <li><label class="custom-checkbox"><input type="checkbox" value="Easy"><span class="checkmark"></span> Easy</label></li>
                             <li><label class="custom-checkbox"><input type="checkbox" value="Medium"><span class="checkmark"></span> Medium</label></li>
@@ -86,14 +97,26 @@
 
                 <!-- Content Area -->
                 <div class="recipes-content">
-                    <div class="results-meta" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-                        <span id="resultsCount">0 recipes found</span>
-                        <div class="sort-dropdown">
-                            Sort by: 
-                            <select id="sortSelect" style="padding: 5px 10px; border-radius: 5px; border: 1px solid var(--border-color); background: var(--bg-white); color: var(--text-dark);">
-                                <option value="newest">Newest</option>
+                    <div class="results-meta" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; background: var(--card-bg); padding: 15px 25px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">
+                        <span id="resultsCount" style="font-weight: 500; color: var(--primary-orange);">0 recipes found</span>
+                        <div class="sort-dropdown" style="display: flex; align-items: center;">
+                            <span style="color: var(--text-gray); margin-right: 15px;">Sort by:</span>
+                            <div class="custom-select-wrapper" id="sortDropdown">
+                                <div class="select-trigger">
+                                    <span id="selectedSort">Newest First</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div class="select-options">
+                                    <div class="select-option selected" data-value="newest">Newest First</div>
+                                    <div class="select-option" data-value="rating">Top Rated</div>
+                                    <div class="select-option" data-value="time">Quickest Cook</div>
+                                </div>
+                            </div>
+                            <!-- Hidden original select for script compatibility if needed, or just update the JS -->
+                            <select id="sortSelect" style="display: none;">
+                                <option value="newest">Newest First</option>
                                 <option value="rating">Top Rated</option>
-                                <option value="time">Cook Time</option>
+                                <option value="time">Quickest Cook</option>
                             </select>
                         </div>
                     </div>
@@ -105,16 +128,62 @@
         </div>
     </main>
 
+    <!-- Footer -->
     <footer>
-        <div class="container">
-            <div class="footer-bottom" style="border-top: none;">
-                &copy; 2026 DishMaster. All rights reserved.
-            </div>
+        <div class="container footer-container">
+            <div class="footer-logo">DISHMASTER</div>
+            <div class="copyright">&copy; 2026 DishMaster. All rights reserved.</div>
         </div>
     </footer>
 
+    <!-- Scripts -->
     <script src="js/data.js"></script>
     <script src="js/app.js"></script>
     <script src="js/recipes.js"></script>
+    <script>
+        // Load profile photo
+        const user = JSON.parse(localStorage.getItem('dm-user'));
+        if (user) {
+            const savedPhoto = localStorage.getItem(`dm-profile-photo-${user.email}`);
+            if (savedPhoto) {
+                document.getElementById('navProfileImg').src = savedPhoto;
+            }
+        }
+
+        // Custom Dropdown Logic
+        const dropdown = document.getElementById('sortDropdown');
+        const trigger = dropdown.querySelector('.select-trigger');
+        const options = dropdown.querySelectorAll('.select-option');
+        const selectedText = document.getElementById('selectedSort');
+        const hiddenSelect = document.getElementById('sortSelect');
+
+        trigger.addEventListener('click', () => {
+            dropdown.classList.toggle('open');
+        });
+
+        options.forEach(option => {
+            option.addEventListener('click', () => {
+                const value = option.getAttribute('data-value');
+                const text = option.textContent;
+
+                // Update UI
+                selectedText.textContent = text;
+                options.forEach(opt => opt.classList.remove('selected'));
+                option.classList.add('selected');
+                dropdown.classList.remove('open');
+
+                // Update hidden select and trigger change
+                hiddenSelect.value = value;
+                hiddenSelect.dispatchEvent(new Event('change'));
+            });
+        });
+
+        // Close dropdown when clicking outside
+        window.addEventListener('click', (e) => {
+            if (!dropdown.contains(e.target)) {
+                dropdown.classList.remove('open');
+            }
+        });
+    </script>
 </body>
 </html>

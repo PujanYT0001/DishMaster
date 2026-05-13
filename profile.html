@@ -4,110 +4,194 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Profile | DishMaster</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        .profile-avatar {
-            position: relative;
-            cursor: pointer;
-            overflow: hidden;
-            transition: var(--transition-smooth);
+        .profile-page-header {
+            background: var(--card-bg);
+            padding: 60px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 106, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 60px;
         }
-        .profile-avatar:hover .avatar-overlay {
-            opacity: 1;
-        }
-        .avatar-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.4);
+
+        .profile-avatar-large {
+            width: 150px;
+            height: 150px;
+            background: #0a0a0a;
+            border-radius: 50%;
+            border: 2px solid var(--primary-orange);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-            opacity: 0;
-            transition: var(--transition-smooth);
+            font-size: 4rem;
+            color: var(--primary-orange);
+            position: relative;
+            overflow: hidden;
         }
-        .profile-avatar img {
+
+        .profile-avatar-large img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 50%;
         }
-        #photoInput {
-            display: none;
+
+        .profile-details h1 {
+            font-family: var(--font-heading);
+            font-size: 3.5rem;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        .profile-details p {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        .profile-stats-row {
+            display: flex;
+            gap: 20px;
+        }
+
+        .p-stat {
+            background: rgba(255, 106, 0, 0.1);
+            padding: 10px 25px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 106, 0, 0.2);
+            font-weight: 500;
+        }
+
+        .p-stat span {
+            color: var(--primary-orange);
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            margin-right: 5px;
+        }
+
+        .recipe-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+        }
+
+        .recipe-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-orange);
+        }
+
+        .recipe-img img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .recipe-info {
+            padding: 20px;
+        }
+
+        .recipe-name {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .profile-page-header {
+                flex-direction: column;
+                text-align: center;
+                padding: 40px 20px;
+            }
+            .profile-stats-row {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Navbar -->
     <nav>
         <div class="container">
             <a href="index.html" class="logo">
-                <i class="fas fa-utensils"></i> DishMaster
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width: 30px; fill: #FF6A00;">
+                    <path d="M11 9H9V2H7V9H5V2H3V9C3 11.12 4.66 12.84 6.75 12.97V22H9.25V12.97C11.34 12.84 13 11.12 13 9V2H11V9ZM16 6V14H18.5V22H21V2C18.24 2 16 4.24 16 6Z"/>
+                </svg>
+                <span>DISH<b>MASTER</b></span>
             </a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="recipes.html">Recipes</a></li>
                 <li><a href="wishlist.html">Wishlist</a></li>
                 <li><a href="videos.html">Videos</a></li>
-                <li><a href="about.html">About</a></li>
                 <li><a href="profile.html" class="active">Profile</a></li>
             </ul>
-            <div class="nav-actions">
-                <a href="login.html" class="btn btn-outline" id="loginBtn">Login</a>
-                <a href="profile.html" class="user-profile-icon" id="userProfileIcon" style="display:none">
-                    <i class="fas fa-user-circle fa-2x"></i>
-                </a>
-                <button onclick="logout()" class="btn btn-outline btn-sm">Logout</button>
+            <div class="nav-right">
+                <div class="profile-avatar" style="margin-right: 15px;">
+                    <img id="navProfileImg" src="https://images.unsplash.com/photo-1583394293214-28dea15ee548?auto=format&fit=crop&q=80&w=200&h=200" alt="Profile">
+                </div>
+                <a href="#" onclick="logout()" class="logout-link">LOGOUT</a>
             </div>
         </div>
     </nav>
 
-    <main style="padding-top: 120px; padding-bottom: 80px;">
+    <main style="padding-top: 120px; padding-bottom: 100px;">
         <div class="container">
-            <div class="profile-header" style="background: var(--bg-white); padding: 40px; border-radius: 30px; box-shadow: var(--card-shadow); display: flex; align-items: center; gap: 30px; margin-bottom: 50px;">
-                <div class="profile-avatar" id="avatarBtn" onclick="document.getElementById('photoInput').click()" style="width: 120px; height: 120px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">
-                    <img id="profileImage" src="" alt="" style="display: none;">
-                    <i id="defaultAvatarIcon" class="fas fa-user"></i>
-                    <div class="avatar-overlay">
-                        <i class="fas fa-camera"></i>
+            <!-- Profile Header -->
+            <div class="profile-page-header">
+                <div class="profile-avatar-large" id="avatarContainer">
+                    <img id="profileImgDisplay" src="" alt="Profile" style="display: none;">
+                    <i id="placeholderIcon" class="fas fa-user"></i>
+                </div>
+                <div class="profile-details">
+                    <h1 id="userName">USER NAME</h1>
+                    <p id="userEmail">user@example.com</p>
+                    <div class="profile-stats-row">
+                        <div class="p-stat"><span id="savedCount">0</span> Saved</div>
+                        <div class="p-stat"><span>2</span> Reviews</div>
                     </div>
                 </div>
-                <input type="file" id="photoInput" accept="image/*" onchange="handlePhotoUpload(event)">
-                <div class="profile-info">
-                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 0;">
-                        <h1 id="userName" style="font-size: 2.5rem; margin-bottom: 0;">User Name</h1>
-                        <button onclick="editProfile()" class="btn btn-outline btn-sm" style="padding: 5px 10px; font-size: 0.8rem;">
-                            <i class="fas fa-edit"></i> Edit
-                        </button>
-                    </div>
-                    <p id="userHandle" style="color: var(--primary); font-weight: 600; margin-bottom: 15px; font-size: 1.1rem;"></p>
-                    <p id="userEmail" style="color: var(--text-muted); font-size: 1rem; margin-bottom: 20px;"></p>
-                    <div class="profile-stats" style="display: flex; gap: 15px;">
-                        <div class="stat-badge" style="background: var(--bg-cream); padding: 10px 20px; border-radius: 15px; border: 1px solid var(--border-color);">
-                            <i class="fas fa-bookmark" style="color: var(--primary); margin-right: 8px;"></i>
-                            <strong id="savedCount">0</strong> Saved
-                        </div>
-                        <div class="stat-badge" style="background: var(--bg-cream); padding: 10px 20px; border-radius: 15px; border: 1px solid var(--border-color);">
-                            <i class="fas fa-star" style="color: #FFB800; margin-right: 8px;"></i>
-                            <strong>2</strong> Reviews
-                        </div>
-                    </div>
+                <div style="margin-left: auto; display: flex; flex-direction: column; gap: 10px;">
+                    <button onclick="document.getElementById('photoUpload').click()" class="btn btn-primary" style="font-size: 0.9rem;">
+                        <i class="fas fa-camera"></i> Change Photo
+                    </button>
+                    <button onclick="editProfile()" class="btn btn-outline" style="font-size: 0.9rem;">Edit Details</button>
+                    <input type="file" id="photoUpload" accept="image/*" style="display: none;">
                 </div>
             </div>
 
+            <!-- Saved Recipes Section -->
             <section class="saved-recipes">
-                <h2 style="margin-bottom: 30px;">My Saved Recipes</h2>
-                <div class="recipes-grid" id="savedRecipesGrid">
+                <h2 class="section-title" style="text-align: left; margin-bottom: 40px;">MY SAVED RECIPES</h2>
+                <div class="category-grid" id="savedRecipesGrid">
                     <!-- Content injected via JS -->
                 </div>
             </section>
         </div>
     </main>
 
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-logo">DISHMASTER</div>
+            <div class="copyright">&copy; 2026 DishMaster. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
     <script src="js/data.js"></script>
     <script src="js/app.js"></script>
     <script>
@@ -118,82 +202,55 @@
                 return;
             }
 
-            document.getElementById('userName').textContent = user.name;
-            document.getElementById('userHandle').textContent = `@${user.username || 'user'}`;
+            document.getElementById('userName').textContent = user.name.toUpperCase();
             document.getElementById('userEmail').textContent = user.email;
 
-            // Load profile photo if exists
+            // Load saved photo
             const savedPhoto = localStorage.getItem(`dm-profile-photo-${user.email}`);
             if (savedPhoto) {
-                const img = document.getElementById('profileImage');
-                const icon = document.getElementById('defaultAvatarIcon');
-                img.src = savedPhoto;
-                img.style.display = 'block';
-                icon.style.display = 'none';
+                updateAvatarUI(savedPhoto);
             }
+
+            // Handle upload
+            document.getElementById('photoUpload').addEventListener('change', handlePhotoUpload);
 
             renderSavedRecipes();
         });
 
-        function handlePhotoUpload(event) {
-            const file = event.target.files[0];
+        function handlePhotoUpload(e) {
+            const file = e.target.files[0];
             if (!file) return;
 
             const reader = new FileReader();
-            reader.onload = function(e) {
-                const base64Image = e.target.result;
+            reader.onload = function(event) {
+                const base64 = event.target.result;
                 const user = JSON.parse(localStorage.getItem('dm-user'));
-                
-                // Store photo
-                localStorage.setItem(`dm-profile-photo-${user.email}`, base64Image);
-                
-                // Update UI
-                const img = document.getElementById('profileImage');
-                const icon = document.getElementById('defaultAvatarIcon');
-                img.src = base64Image;
-                img.style.display = 'block';
-                icon.style.display = 'none';
-
-                // Update nav icons if they exist
-                updateNavProfileIcons(base64Image);
-                
-                alert('Profile photo updated successfully!');
+                localStorage.setItem(`dm-profile-photo-${user.email}`, base64);
+                updateAvatarUI(base64);
             };
             reader.readAsDataURL(file);
         }
 
-        function updateNavProfileIcons(photoData) {
-            const navIcons = document.querySelectorAll('#userProfileIcon i');
-            navIcons.forEach(icon => {
-                const parent = icon.parentElement;
-                parent.innerHTML = `<img src="${photoData}" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;">`;
-            });
+        function updateAvatarUI(photoData) {
+            const img = document.getElementById('profileImgDisplay');
+            const icon = document.getElementById('placeholderIcon');
+            const navImg = document.getElementById('navProfileImg');
+            
+            img.src = photoData;
+            img.style.display = 'block';
+            icon.style.display = 'none';
+            
+            if (navImg) navImg.src = photoData;
         }
 
         function editProfile() {
             const user = JSON.parse(localStorage.getItem('dm-user'));
             const newName = prompt("Enter your full name:", user.name);
-            const newUsername = prompt("Enter your username:", user.username || "user");
-
-            if (newName && newUsername) {
+            if (newName) {
                 user.name = newName;
-                user.username = newUsername;
-                
-                // Update session
                 localStorage.setItem('dm-user', JSON.stringify(user));
-                
-                // Update "mock database"
-                localStorage.setItem(`dm-user-data-${user.email}`, JSON.stringify({
-                    email: user.email,
-                    name: user.name,
-                    username: user.username
-                }));
-
-                // Update UI
-                document.getElementById('userName').textContent = user.name;
-                document.getElementById('userHandle').textContent = `@${user.username}`;
-                
-                alert("Profile updated successfully!");
+                document.getElementById('userName').textContent = user.name.toUpperCase();
+                alert("Profile updated!");
             }
         }
 
@@ -204,11 +261,11 @@
             document.getElementById('savedCount').textContent = favorites.length;
 
             if (favorites.length === 0) {
-                grid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 50px;"><p>You haven\'t saved any recipes yet.</p><a href="recipes.html" class="btn btn-primary" style="margin-top: 20px;">Browse Recipes</a></div>';
+                grid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 50px;"><p style="color: var(--text-gray);">No saved recipes yet.</p><a href="recipes.html" class="btn btn-primary" style="margin-top: 20px;">Browse Now</a></div>';
                 return;
             }
 
-            const savedRecipes = window.recipeData.filter(r => favorites.includes(r.id));
+            const savedRecipes = (window.recipeData || []).filter(r => favorites.includes(r.id));
 
             grid.innerHTML = savedRecipes.map(recipe => `
                 <div class="recipe-card">
@@ -217,9 +274,9 @@
                     </div>
                     <div class="recipe-info">
                         <h3 class="recipe-name">${recipe.name}</h3>
-                        <div class="recipe-footer">
-                            <a href="recipe-detail.html?id=${recipe.id}" class="btn btn-primary btn-sm">View Recipe</a>
-                            <button onclick="removeFavorite('${recipe.id}')" style="color: var(--accent); font-size: 1.2rem;"><i class="fas fa-trash"></i></button>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <a href="recipe-detail.html?id=${recipe.id}" class="btn btn-primary" style="font-size: 0.9rem; padding: 8px 20px;">View</a>
+                            <button onclick="removeFavorite('${recipe.id}')" style="background: transparent; border: none; color: #ff4444; cursor: pointer; font-size: 1.2rem;"><i class="fas fa-trash"></i></button>
                         </div>
                     </div>
                 </div>
@@ -227,7 +284,9 @@
         }
 
         function removeFavorite(id) {
-            window.Utils.removeFromFavorites(id);
+            let favorites = JSON.parse(localStorage.getItem('dm-favorites') || '[]');
+            favorites = favorites.filter(favId => favId !== id);
+            localStorage.setItem('dm-favorites', JSON.stringify(favorites));
             renderSavedRecipes();
         }
 
